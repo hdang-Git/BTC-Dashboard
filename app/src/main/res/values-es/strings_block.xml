@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Strings for BlockNav-->
+    <string name="hintBlockNav">Introduzca su Número de Bloque</string>
+
+    <!-- String for Block -->
+    <string name="blockNum">Número de bloque: </string>
+    <string name="hash">Hash: </string>
+    <string name="version">Versión: </string>
+    <string name="confirmation">Confirmación: </string>
+    <string name="timestamp">Sello de Tiempo: </string>
+    <string name="transNum">Número de Transacción: </string>
+    <string name="merkleRoot">MerkleRoot: </string>
+    <string name="nextBlock">Siguiente Número de Bloque: </string>
+    <string name="prevBlock">Número de Bloque Anterior: </string>
+    <string name="nextHash">Siguiente Hash del Bloque:</string>
+    <string name="prevHash">Hash del Bloque Anterior: </string>
+    <string name="fee">Cuota: </string>
+    <string name="sumTraded">Suma de Monedas Negociadas: </string>
+    <string name="size">Tamaño: </string>
+    <string name="diff">Dificultad: </string>
+</resources>

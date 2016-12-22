@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Strings for BlockNav-->
+    <string name="hintBlockNav">Enter Block Number</string>
+
+    <!-- String for Block -->
+    <string name="blockNum">Block Number: </string>
+    <string name="hash">Hash: </string>
+    <string name="version">Version: </string>
+    <string name="confirmation">Confirmations: </string>
+    <string name="timestamp">Timestamp: </string>
+    <string name="transNum">Transaction Number: </string>
+    <string name="merkleRoot">MerkleRoot: </string>
+    <string name="nextBlock">Next Block Number: </string>
+    <string name="prevBlock">Previous Block Number: </string>
+    <string name="nextHash">Next Block\'s Hash:</string>
+    <string name="prevHash">Previous Block\'s Hash: </string>
+    <string name="fee">Fee: </string>
+    <string name="sumTraded">Sum of Traded Coins: </string>
+    <string name="size">Size: </string>
+    <string name="diff">Difficulty: </string>
+</resources>

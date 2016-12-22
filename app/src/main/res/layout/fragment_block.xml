@@ -1,0 +1,322 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hai.bitcoindashboard.BlockFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="437dp">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableRow>
+
+            <TextView
+                android:text="@string/blockNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/textView3"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value3"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:text="@string/hash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:layout_below="@+id/textView3"
+                android:layout_alignStart="@+id/textView3"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value4"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
+                android:layout_alignStart="@+id/textView4"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value5"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/confirmation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView5"
+                android:layout_alignStart="@+id/textView5"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView6" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value6"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView6"
+                android:layout_alignStart="@+id/textView6"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView7" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value7"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="@string/transNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView7"
+                android:layout_alignStart="@+id/textView7"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView8" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value8"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/merkleRoot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView8"
+                android:layout_alignStart="@+id/textView8"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView9" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value9"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/nextBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView9"
+                android:layout_alignStart="@+id/textView9"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView10" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value10"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/prevBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView10"
+                android:layout_alignStart="@+id/textView10"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView11" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value11"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+
+        <TableRow>
+            <TextView
+                android:text="@string/nextHash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView11"
+                android:layout_alignStart="@+id/textView11"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView12" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value12"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/prevHash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView11"
+                android:layout_alignStart="@+id/textView11"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView13" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value13"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView12"
+                android:layout_alignStart="@+id/textView12"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView14" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value14"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/sumTraded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView13"
+                android:layout_alignStart="@+id/textView13"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView15" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value15"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView14"
+                android:layout_alignStart="@+id/textView14"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView16" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value16"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/diff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView15"
+                android:layout_alignStart="@+id/textView15"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:id="@+id/textView17" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="25dp"
+                android:id="@+id/value17"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+        </TableRow>
+    </TableLayout>
+    </ScrollView>
+</FrameLayout>

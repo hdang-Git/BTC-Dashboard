@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Bitcoin Dashboard</string>
+
+    <!-- Strings for nav drawer and main activity layout files-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="bitcoinPrice">BTC Price</string>
+    <string name="bitcoinCharts">BTC Graph</string>
+    <string name="bitcoinBlock">BTC Block</string>
+    <string name="bitcoinAddress">BTC Address</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings for use for main activity at runtime-->
+    <string name="bitcoinGraphs">Bitcoin Graphs</string>
+    <string name="blockInfo">Block Info</string>
+    <string name="addrInfo">Address Info</string>
+
+
+    <string name="bitcoinMP"></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="find">Find</string>
+</resources>
