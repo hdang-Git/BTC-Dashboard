@@ -1,2 +1,3 @@
-# BitcoinDashboard
-Continuation of the Bitcoin Dashboard in Android Folder. 
+# BTC-Dashboard
+A continuation of the app formerly called BitcoinDashboard. 
+######(In a parallel galaxy far,far away, was formerly called BITKONG, BITZILLA, ITBITME, ...)
