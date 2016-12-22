@@ -1,3 +1,3 @@
 # BTC-Dashboard
 A continuation of the app formerly called BitcoinDashboard. 
-######(In a parallel galaxy far,far away, was formerly called BITKONG, BITZILLA, ITBITME, ...)
+######(formerly called BITKONG, BITZILLA, ITBITME, in a parallel galaxy far, far away)
