@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ActionBar ab;
-    BTCPrice btcPriceFrag;
+    BTCPriceFragment btcPriceFrag;
     GraphFragment graphFrag;
     BlockNavFragment blockFrag;
     AddressFragment addrFrag;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
 
     public void startUp(){
-        btcPriceFrag = new BTCPrice();
+        btcPriceFrag = new BTCPriceFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.mainFragment, btcPriceFrag)
                 .commit();
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_bitcoin) {
             //go to homepage
-            btcPriceFrag = new BTCPrice();
+            btcPriceFrag = new BTCPriceFragment();
             transaction.replace(R.id.mainFragment, btcPriceFrag);
             ab.setTitle(getString(R.string.app_name));
         } else if (id == R.id.nav_charts) {
