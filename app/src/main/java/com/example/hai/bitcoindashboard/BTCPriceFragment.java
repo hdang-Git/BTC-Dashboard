@@ -1,6 +1,7 @@
 package com.example.hai.bitcoindashboard;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,9 +13,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.LargeValueFormatter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -137,6 +142,7 @@ public class BTCPriceFragment extends Fragment {
                 List<Entry> entries =   new ArrayList<Entry>();
                 double x;
                 double y;
+                //double x_Min = valArr.getJSONObject(0).getDouble("x");
                 for(int i = 0; i < valArr.length(); i++){
                     values = valArr.getJSONObject(i);
                     x = values.getDouble("x");
@@ -145,7 +151,18 @@ public class BTCPriceFragment extends Fragment {
                     entries.add(new Entry((float) x, (float) y));
                 }
                 LineDataSet dataSet = new LineDataSet(entries, "Label");
+                dataSet.setDrawCircles(false);
+                dataSet.setColor(Color.RED);
                 LineData lineData = new LineData(dataSet);
+                lineData.setValueFormatter(new LargeValueFormatter(){
+
+                });
+                XAxis xAxis = lineChart.getXAxis();
+                xAxis.setValueFormatter(new LargeValueFormatter());
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+
+                //xAxis.setAxisMinimum((float) x_Min);
                 lineChart.setData(lineData);
                 lineChart.invalidate();
             } catch(Exception e){
