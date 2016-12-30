@@ -29,7 +29,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -81,7 +83,6 @@ public class BTCPriceFragment extends Fragment {
                 } catch(Exception e){
                     e.printStackTrace();
                 }
-
             }
         };
         t.start();
@@ -139,30 +140,39 @@ public class BTCPriceFragment extends Fragment {
                 JSONObject marketPrice = new JSONObject((String) msg.obj);
                 JSONArray valArr = marketPrice.getJSONArray("values");
                 JSONObject values;
-                List<Entry> entries =   new ArrayList<Entry>();
+                List<Entry> entries =   new ArrayList<>();
+                long unixDT;
                 double x;
                 double y;
-                //double x_Min = valArr.getJSONObject(0).getDouble("x");
                 for(int i = 0; i < valArr.length(); i++){
                     values = valArr.getJSONObject(i);
                     x = values.getDouble("x");
                     y = values.getDouble("y");
-                    log.info("x: " + x + "\ty: " + y);
+                    unixDT = (long) x * 1000;
+                    Date time = new Date(unixDT);
+                    String date = new SimpleDateFormat("MM.dd.yy").format(time);
+
+                    log.info("x: " + x + " " + date + "\ty: " + y);
                     entries.add(new Entry((float) x, (float) y));
                 }
-                LineDataSet dataSet = new LineDataSet(entries, "Label");
+                LineDataSet dataSet = new LineDataSet(entries, "Datetime");
                 dataSet.setDrawCircles(false);
                 dataSet.setColor(Color.RED);
                 LineData lineData = new LineData(dataSet);
-                lineData.setValueFormatter(new LargeValueFormatter(){
-
-                });
+                //lineData.setValueFormatter(new LargeValueFormatter());
                 XAxis xAxis = lineChart.getXAxis();
-                xAxis.setValueFormatter(new LargeValueFormatter());
+                //xAxis.setValueFormatter(new LargeValueFormatter());
+                xAxis.setValueFormatter(new IAxisValueFormatter() {
+                    private SimpleDateFormat date = new SimpleDateFormat("MM.dd.yy");
+                    @Override
+                    public String getFormattedValue(float value, AxisBase axis) {
+                        Date dt = new Date((long) value * 1000);
+                        String val = date.format(dt);
+                        log.info("original value: " + value + " formatted - " + val);
+                        return val;
+                    }
+                });
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-
-
-                //xAxis.setAxisMinimum((float) x_Min);
                 lineChart.setData(lineData);
                 lineChart.invalidate();
             } catch(Exception e){
