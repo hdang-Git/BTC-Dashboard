@@ -43,15 +43,7 @@
             android:layout_height="1dp"
             android:layout_above="@id/cardView"
             android:background="?android:attr/dividerHorizontal" />
-        <!--
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="3dp"
-            android:id="@+id/separator1"
-            android:background="@android:color/holo_blue_light"
-            android:layout_above="@+id/cardView"
-            android:layout_below="@+id/chart1" />
-        -->
+
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart1"
             android:layout_width="match_parent"
@@ -71,6 +63,7 @@
 
             <Button
                 android:text="1d"
+                android:textSize="12sp"
                 android:layout_width="48dp"
                 android:layout_height="38dp"
                 android:background="?android:attr/selectableItemBackground"
@@ -83,6 +76,7 @@
                 android:background="?android:attr/dividerVertical"/>
             <Button
                 android:text="1w"
+                android:textSize="12sp"
                 android:layout_width="48dp"
                 android:layout_height="38dp"
                 android:background="?android:attr/selectableItemBackground"
@@ -92,9 +86,10 @@
                 android:layout_height="fill_parent"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="@android:color/holo_blue_light" />
+                android:background="?android:attr/dividerVertical" />
             <Button
                 android:text="1m"
+                android:textSize="12sp"
                 android:layout_width="48dp"
                 android:layout_height="38dp"
                 android:background="?android:attr/selectableItemBackground"
@@ -107,12 +102,70 @@
                 android:background="?android:attr/dividerVertical" />
             <Button
                 android:text="1y"
+                android:textSize="12sp"
                 android:layout_width="48dp"
                 android:layout_height="38dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/year1" />
 
         </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:orientation="horizontal"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="53dp">
+
+        </RadioGroup>
+
+        <RadioButton
+            android:text="1d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:id="@+id/radioButton"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/buttonstate"/>
+
+        <RadioButton
+            android:text="1w"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButton2"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toEndOf="@+id/radioButton"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/buttonstate"/>
+
+        <RadioButton
+            android:text="1m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toEndOf="@+id/radioButton2"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/buttonstate"
+            android:id="@+id/radioButton3" />
+
+        <RadioButton
+            android:text="1y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_toEndOf="@+id/radioButton3"
+            android:layout_marginStart="14dp"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:layout_margin="10dp"
+            android:id="@+id/radioButton4" />
 
 
     </RelativeLayout>
