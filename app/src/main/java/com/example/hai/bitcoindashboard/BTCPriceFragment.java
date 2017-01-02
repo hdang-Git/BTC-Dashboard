@@ -48,7 +48,7 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
     Button button5;
     Button button6;
     Button button7;
-    String times[] = {"1 day", "5 days", "1 month", "6 months", "1 year", "2 years"};   //"1d", "5d", "1M", "6M", "1Y", "2Y";
+    String times[] = {"1days", "7days", "1months", "6months", "1years", "2years", "all"};   //"1d", "7d", "1m", "6m", "1y", "2y", "all";
 
     public BTCPriceFragment() {
         // Required empty public constructor
@@ -78,37 +78,46 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         button7.setOnClickListener(this);
 
         retrieveBTCPriceData();
-        retrieveGraphData();
+        retrieveGraphData("all");
         return v;
     }
 
     @Override
     public void onClick(View v) {
+        int num = 6;
         switch(v.getId()){
             case R.id.day1:
                 log.info("button day 1 clicked");
+                num = 0;
                 break;
             case R.id.week1:
                 log.info("button week1 clicked");
+                num = 1;
                 break;
             case R.id.month1:
                 log.info("button month1 clicked");
+                num = 2;
                 break;
             case R.id.month6:
                 log.info("button month6 clicked");
+                num = 3;
                 break;
             case R.id.year1:
                 log.info("button year1 clicked");
+                num = 4;
                 break;
             case R.id.year2:
                 log.info("button year2 clicked");
+                num = 5;
                 break;
             case R.id.all:
                 log.info("button all clicked");
+                num = 6;
                 break;
             default:
                 break;
         }
+        retrieveGraphData(times[num]);
     }
 
     public void retrieveBTCPriceData(){
@@ -159,13 +168,14 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         }
     });
 
-    public void retrieveGraphData(){
-
+    public void retrieveGraphData(String timespan){
+        final String time = timespan;
         Thread t = new Thread(){
             @Override
             public void run() {
+                String urlString = "https://api.blockchain.info/charts/market-price?format=json&timespan=" + time;
                 try {
-                    URL url = new URL("https://api.blockchain.info/charts/market-price?format=json&timespan=all");
+                    URL url = new URL(urlString);
                     BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
                     StringBuilder response = new StringBuilder();
                     String tmpString = "";
