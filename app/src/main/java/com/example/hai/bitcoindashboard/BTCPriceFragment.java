@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -36,10 +37,19 @@ import java.util.List;
 import java.util.logging.Logger;
 
 
-public class BTCPriceFragment extends Fragment {
+public class BTCPriceFragment extends Fragment implements View.OnClickListener {
 
     Logger log = Logger.getAnonymousLogger();
     LineChart lineChart;
+    Button button1;
+    Button button2;
+    Button button3;
+    Button button4;
+    Button button5;
+    Button button6;
+    Button button7;
+    String times[] = {"1 day", "5 days", "1 month", "6 months", "1 year", "2 years"};   //"1d", "5d", "1M", "6M", "1Y", "2Y";
+
     public BTCPriceFragment() {
         // Required empty public constructor
     }
@@ -51,9 +61,54 @@ public class BTCPriceFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_btcprice, container, false);
         lineChart = (LineChart) (v.findViewById(R.id.chart1));
+        button1 = (Button) v.findViewById(R.id.day1);
+        button2 = (Button) v.findViewById(R.id.week1);
+        button3 = (Button) v.findViewById(R.id.month1);
+        button4 = (Button) v.findViewById(R.id.month6);
+        button5 = (Button) v.findViewById(R.id.year1);
+        button6 = (Button) v.findViewById(R.id.year2);
+        button7 = (Button) v.findViewById(R.id.all);
+
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
+
         retrieveBTCPriceData();
         retrieveGraphData();
         return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.day1:
+                log.info("button day 1 clicked");
+                break;
+            case R.id.week1:
+                log.info("button week1 clicked");
+                break;
+            case R.id.month1:
+                log.info("button month1 clicked");
+                break;
+            case R.id.month6:
+                log.info("button month6 clicked");
+                break;
+            case R.id.year1:
+                log.info("button year1 clicked");
+                break;
+            case R.id.year2:
+                log.info("button year2 clicked");
+                break;
+            case R.id.all:
+                log.info("button all clicked");
+                break;
+            default:
+                break;
+        }
     }
 
     public void retrieveBTCPriceData(){
@@ -181,6 +236,4 @@ public class BTCPriceFragment extends Fragment {
             return true;
         }
     });
-
-
 }
