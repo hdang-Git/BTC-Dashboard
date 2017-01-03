@@ -15,12 +15,15 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.renderer.AxisRenderer;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,6 +80,7 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
 
+        formatGraph();
         retrieveBTCPriceData();
         retrieveGraphData("all");
         return v;
@@ -205,7 +209,7 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
                 JSONObject marketPrice = new JSONObject((String) msg.obj);
                 JSONArray valArr = marketPrice.getJSONArray("values");
                 JSONObject values;
-                List<Entry> entries =   new ArrayList<>();
+                List<Entry> entries = new ArrayList<>();
                 long unixDT;
                 double x;
                 double y;
@@ -220,30 +224,44 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
                     log.info("x: " + x + " " + date + "\ty: " + y);
                     entries.add(new Entry((float) x, (float) y));
                 }
-                LineDataSet dataSet = new LineDataSet(entries, "Datetime");
-                dataSet.setDrawCircles(false);
-                dataSet.setColor(Color.RED);
-                LineData lineData = new LineData(dataSet);
-                //lineData.setValueFormatter(new LargeValueFormatter());
-                XAxis xAxis = lineChart.getXAxis();
-                //xAxis.setValueFormatter(new LargeValueFormatter());
-                xAxis.setValueFormatter(new IAxisValueFormatter() {
-                    private SimpleDateFormat date = new SimpleDateFormat("MM.dd.yy");
-                    @Override
-                    public String getFormattedValue(float value, AxisBase axis) {
-                        Date dt = new Date((long) value * 1000);
-                        String val = date.format(dt);
-                        log.info("original value: " + value + " formatted - " + val);
-                        return val;
-                    }
-                });
-                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-                lineChart.setData(lineData);
-                lineChart.invalidate();
+                drawGraph(entries);
             } catch(Exception e){
                 e.printStackTrace();
             }
             return true;
         }
     });
+
+    public void drawGraph(List<Entry> entries){
+        LineDataSet dataSet = new LineDataSet(entries, "Datetime");
+        dataSet.setDrawCircles(false);
+        dataSet.setColor(Color.RED);
+        LineData lineData = new LineData(dataSet);
+        //Display date on x-axis in specific format
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+            private SimpleDateFormat date = new SimpleDateFormat("MM.dd.yy");
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                Date dt = new Date((long) value * 1000);
+                String val = date.format(dt);
+                log.info("original value: " + value + " formatted - " + val);
+                return val;
+            }
+        });
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.setData(lineData);
+        lineChart.invalidate();
+    }
+
+    public void formatGraph(){
+        /*
+        //turn off the legend
+        Legend legend = lineChart.getLegend();
+        legend.setEnabled(false);
+        */
+        //turn off right y axis
+        YAxis yAxis = lineChart.getAxisRight();
+        yAxis.setEnabled(false);
+    }
 }
