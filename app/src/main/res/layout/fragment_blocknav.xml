@@ -7,61 +7,53 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RelativeLayout
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/blocknavfrag"
-        >
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/enterButton"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="44dp" />
+            android:layout_height="match_parent"
+            android:id="@+id/blocknavfrag">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/inputField"
-            android:layout_above="@+id/pager"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="14dp"
-            android:hint="@string/hintBlockNav" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/enterButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="44dp" />
 
-        <Button
-            android:text="Enter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:id="@+id/enterButton"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/inputField" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/inputField"
+                android:layout_above="@+id/pager"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="14dp"
+                android:hint="@string/hintBlockNav" />
 
+            <Button
+                android:text="@string/enter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:id="@+id/enterButton"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/inputField" />
+        </RelativeLayout>
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_queue_black_24dp"
-            android:id="@+id/addFab"
-            android:layout_above="@+id/pager"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="14dp" />
+            app:layout_anchor="@id/blocknavfrag"
+            app:layout_anchorGravity="bottom|right|end"
+            android:id="@+id/addFab"/>
 
-        <!--
-        <FrameLayout
-            android:id="@+id/blockNav"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/button3"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="23dp">
+    </android.support.design.widget.CoordinatorLayout>
 
-        </FrameLayout>
-        -->
-    </RelativeLayout>
 </FrameLayout>

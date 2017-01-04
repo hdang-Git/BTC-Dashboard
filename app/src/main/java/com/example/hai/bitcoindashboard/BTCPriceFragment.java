@@ -2,10 +2,12 @@ package com.example.hai.bitcoindashboard;
 
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +15,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -24,6 +28,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.renderer.AxisRenderer;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -121,6 +126,9 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
+        //resize graph back to default for case if zoomed
+        lineChart.fitScreen();
+        //draw graph
         retrieveGraphData(times[num]);
     }
 
@@ -173,6 +181,7 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
     });
 
     public void retrieveGraphData(String timespan){
+        log.info("retrieveGraphData() called");
         final String time = timespan;
         Thread t = new Thread(){
             @Override
@@ -205,6 +214,7 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
     Handler graphResponseHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
+            log.info("graphResponseHandler() called");
             try{
                 JSONObject marketPrice = new JSONObject((String) msg.obj);
                 JSONArray valArr = marketPrice.getJSONArray("values");
@@ -233,12 +243,21 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
     });
 
     public void drawGraph(List<Entry> entries){
+        log.info("drawGraph() called");
         LineDataSet dataSet = new LineDataSet(entries, "Datetime");
         dataSet.setDrawCircles(false);
         dataSet.setColor(Color.RED);
+        dataSet.setDrawFilled(true);
+        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.fade_red);
+        dataSet.setFillDrawable(drawable);
+        //dataSet.setColors(ColorTemplate.PASTEL_COLORS);
+        dataSet.setLineWidth(1);
         LineData lineData = new LineData(dataSet);
-        //Display date on x-axis in specific format
+        //Display date on x-axis in specific date format
         XAxis xAxis = lineChart.getXAxis();
+        //turn off x-axis grid lines
+        xAxis.setDrawGridLines(false);
+        xAxis.setLabelRotationAngle(-45);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             private SimpleDateFormat date = new SimpleDateFormat("MM.dd.yy");
             @Override
@@ -251,17 +270,24 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         });
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         lineChart.setData(lineData);
-        lineChart.invalidate();
+        lineChart.animateX(1000);
+        //lineChart.invalidate();
     }
 
     public void formatGraph(){
-        /*
+        log.info("formatGraph() called");
         //turn off the legend
         Legend legend = lineChart.getLegend();
         legend.setEnabled(false);
-        */
         //turn off right y axis
         YAxis yAxis = lineChart.getAxisRight();
         yAxis.setEnabled(false);
+        //turn off y-axis grid lines
+        yAxis.setDrawGridLines(false);
+        //turn off description
+        lineChart.setDescription(null);
+        lineChart.getAxisLeft().setDrawGridLines(false);
+        //autoscale on y-axis
+        lineChart.setAutoScaleMinMaxEnabled(true);
     }
 }

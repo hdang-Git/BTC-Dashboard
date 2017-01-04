@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day1">1d</string>
+    <string name="week1">1w</string>
+    <string name="month1">1m</string>
+    <string name="month6">6m</string>
+    <string name="year1">1y</string>
+    <string name="year2">2y</string>
+    <string name="all">all</string>
+</resources>

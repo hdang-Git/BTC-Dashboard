@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.hai.bitcoindashboard.BTCPriceFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -16,12 +17,14 @@
             android:id="@+id/cardView"
             android:layout_marginEnd="188dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true">
+            android:layout_alignParentEnd="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="2dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
+                android:layout_gravity="center"
                 android:layout_height="83dp">
-
                 <TextView
                     android:text="@string/bitcoinMP"
                     android:layout_width="match_parent"
@@ -35,7 +38,6 @@
                     android:textAlignment="center"
                     android:layout_alignParentTop="true" />
             </RelativeLayout>
-
         </android.support.v7.widget.CardView>
 
         <View
@@ -64,12 +66,14 @@
             <View
                 android:layout_width="20dp"
                 android:layout_height="2dp"
+                android:layout_weight="1"
                 android:background="#c0c0c0"/>
             <Button
-                android:text="1d"
+                android:text="@string/day1"
                 android:textSize="12sp"
-                android:layout_width="48dp"
+                android:layout_width="0dp"
                 android:layout_height="38dp"
+                android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/day1" />
             <View
@@ -79,10 +83,11 @@
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/dividerVertical"/>
             <Button
-                android:text="1w"
+                android:text="@string/week1"
                 android:textSize="12sp"
-                android:layout_width="48dp"
+                android:layout_width="0dp"
                 android:layout_height="38dp"
+                android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/week1" />
             <View
@@ -92,10 +97,11 @@
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/dividerVertical" />
             <Button
-                android:text="1m"
+                android:text="@string/month1"
                 android:textSize="12sp"
-                android:layout_width="48dp"
+                android:layout_width="0dp"
                 android:layout_height="38dp"
+                android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/month1" />
             <View
@@ -105,10 +111,11 @@
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/dividerVertical" />
             <Button
-                android:text="6m"
+                android:text="@string/month6"
                 android:textSize="12sp"
-                android:layout_width="48dp"
+                android:layout_width="0dp"
                 android:layout_height="38dp"
+                android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/month6" />
             <View
@@ -118,10 +125,11 @@
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/dividerVertical"/>
             <Button
-                android:text="1y"
+                android:text="@string/year1"
                 android:textSize="12sp"
-                android:layout_width="48dp"
+                android:layout_width="0dp"
                 android:layout_height="38dp"
+                android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/year1" />
             <View
@@ -131,10 +139,11 @@
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/dividerVertical"/>
             <Button
-                android:text="2y"
+                android:text="@string/year2"
                 android:textSize="12sp"
-                android:layout_width="48dp"
+                android:layout_width="0dp"
                 android:layout_height="38dp"
+                android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/year2" />
             <View
@@ -144,76 +153,18 @@
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/dividerVertical"/>
             <Button
-                android:text="all"
+                android:text="@string/all"
                 android:textSize="12sp"
-                android:layout_width="48dp"
+                android:layout_width="0dp"
                 android:layout_height="38dp"
+                android:layout_weight="1"
                 android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/all" />
             <View
                 android:layout_width="20dp"
                 android:layout_height="2dp"
+                android:layout_weight="1"
                 android:background="#c0c0c0"/>
         </LinearLayout>
-<!--
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayout"
-            android:orientation="horizontal"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="53dp">
-
-        </RadioGroup>
-
-        <RadioButton
-            android:text="1d"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayout"
-            android:id="@+id/radioButton"
-            android:button="@android:color/transparent"
-            android:checked="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/buttonstate"/>
-
-        <RadioButton
-            android:text="1w"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioButton2"
-            android:layout_below="@+id/linearLayout"
-            android:layout_toEndOf="@+id/radioButton"
-            android:button="@android:color/transparent"
-            android:checked="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/buttonstate"/>
-
-        <RadioButton
-            android:text="1m"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayout"
-            android:layout_toEndOf="@+id/radioButton2"
-            android:button="@android:color/transparent"
-            android:checked="true"
-            android:layout_margin="10dp"
-            android:background="@drawable/buttonstate"
-            android:id="@+id/radioButton3" />
-
-        <RadioButton
-            android:text="1y"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayout"
-            android:layout_toEndOf="@+id/radioButton3"
-            android:layout_marginStart="14dp"
-            android:button="@android:color/transparent"
-            android:checked="true"
-            android:layout_margin="10dp"
-            android:id="@+id/radioButton4" />
-
--->
     </RelativeLayout>
-
 </FrameLayout>

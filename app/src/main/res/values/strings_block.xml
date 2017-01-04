@@ -2,7 +2,7 @@
 <resources>
     <!-- Strings for BlockNav-->
     <string name="hintBlockNav">Enter Block Number</string>
-
+    <string name="enter">Enter</string>
     <!-- String for Block -->
     <string name="blockNum">Block Number: </string>
     <string name="hash">Hash: </string>
