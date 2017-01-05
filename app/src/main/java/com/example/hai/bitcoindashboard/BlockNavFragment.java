@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class BlockNavFragment extends Fragment {
     Logger log = Logger.getAnonymousLogger();
     ViewPager pager;
     PagerAdapter pa;
-    Button enterButton;
+    ImageButton enterButton;
     FloatingActionButton addButton;
     EditText textField;
     int num;
@@ -52,7 +53,7 @@ public class BlockNavFragment extends Fragment {
         view = (RelativeLayout) v.findViewById(R.id.blocknavfrag);
 
         log.info("onCreateView() called");
-        enterButton = (Button) v.findViewById(R.id.enterButton);
+        enterButton = (ImageButton) v.findViewById(R.id.enterButton);
         addButton = (FloatingActionButton) v.findViewById(R.id.addFab);
         textField = (EditText) v.findViewById(R.id.inputField);
 
@@ -126,18 +127,7 @@ public class BlockNavFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*
-        BlockFragment block = new BlockFragment();
-        getChildFragmentManager()
-                .beginTransaction()
-                .add(R.id.blockNav, block)
-                .commit();
-
-        */
     }
-
-
 }
 
 

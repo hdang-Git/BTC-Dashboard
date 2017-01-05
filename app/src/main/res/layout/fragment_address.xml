@@ -7,13 +7,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="fill">
     <!-- TODO: Update blank fragment layout -->
 
         <TextView
             android:text="@string/addrBal"
             android:layout_width="match_parent"
             android:layout_height="56dp"
+            android:gravity="center"
+            android:textColor="@color/cardview_dark_background"
             android:background="@drawable/shape"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"

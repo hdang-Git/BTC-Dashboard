@@ -158,7 +158,6 @@ public class AddressFragment extends Fragment {
     //If does exist, read and fill in arrayList
     public void checkForExistingFile(){
         //find file reference to implement internal file storage
-        //file = getActivity().getFilesDir();
         file = getActivity().getFileStreamPath(fileName);
         log.info("checkForExistingFile() called");
         try{
@@ -238,7 +237,6 @@ public class AddressFragment extends Fragment {
                 log.info("run() is called");
                 try {
                     URL url = new URL(urlString);
-                    //URL url = new URL("https://blockchain.info/address/198aMn6ZYAczwrE5NvNTUMyJ5qkfy4g3Hi?format=json");
                     BufferedReader reader = new BufferedReader(
                             new InputStreamReader(
                                     url.openStream()));
@@ -271,8 +269,9 @@ public class AddressFragment extends Fragment {
             try {
                 JSONObject addressObject = new JSONObject((String) msg.obj);
                 JSONObject dataObject = addressObject.getJSONObject("data");
+                String value = "$ " + String.valueOf(dataObject.getString("balance"));
                 ((TextView) getView().findViewById(R.id.addrBalance))
-                        .setText("$ " + String.valueOf(dataObject.getString("balance")));
+                        .setText(value);
             } catch (JSONException e) {
                 log.info("JSON Parsing error in AddressFragment - responseHandler()");
                 e.printStackTrace();

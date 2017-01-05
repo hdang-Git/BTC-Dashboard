@@ -23,27 +23,27 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="44dp" />
 
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toEndOf="@+id/inputField"
+                android:background="@drawable/imgbtn_block"
+                app:srcCompat="@drawable/ic_arrow_forward_black_24dp"
+                android:id="@+id/enterButton" />
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
+                android:maxLines="1"
                 android:id="@+id/inputField"
-                android:layout_above="@+id/pager"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="14dp"
-                android:hint="@string/hintBlockNav" />
-
-            <Button
-                android:text="@string/enter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:id="@+id/enterButton"
-                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_marginStart="34dp"
+                android:hint="@string/hintBlockNav"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/inputField" />
+                android:layout_alignParentStart="true" />
         </RelativeLayout>
+
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

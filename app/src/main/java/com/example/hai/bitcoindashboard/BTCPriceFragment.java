@@ -15,10 +15,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -26,9 +24,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.LargeValueFormatter;
-import com.github.mikephil.charting.renderer.AxisRenderer;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -174,6 +169,10 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
                 JSONObject btce = markets.getJSONObject("btce");
                 ((TextView) getView().findViewById(R.id.bitcoinCurrentPrice)).setText(btce.getString("value"));
             } catch (JSONException e) {
+                e.printStackTrace();
+            } catch(NullPointerException e){
+                e.printStackTrace();
+            } catch(Exception e){
                 e.printStackTrace();
             }
             return true;

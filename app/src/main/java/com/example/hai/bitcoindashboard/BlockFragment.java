@@ -15,6 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.logging.Logger;
@@ -116,7 +117,7 @@ public class BlockFragment extends Fragment {
                 ((TextView) getView().findViewById(R.id.value15)).setText(data.getString("vout_sum"));
                 ((TextView) getView().findViewById(R.id.value16)).setText(data.getString("size"));
                 ((TextView) getView().findViewById(R.id.value17)).setText(data.getString("difficulty"));
-            } catch (JSONException e) {
+            } catch(Exception e){
                 e.printStackTrace();
             }
             return true;
