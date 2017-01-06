@@ -8,10 +8,14 @@
     <color name="lightGreen">#8bc34a</color>
     <color name="hotPink">#ec407a</color>
     <color name="red">#e53935</color>
-    <color name="blankWhite">#c0c0c0</color>
+    <color name="amber">#ffc107</color>
+    <color name="darkOrange">#e65100</color>
+    <color name="grey">#c0c0c0</color>
+    <color name="white">#ffffff</color>
     <color name="clear">#00ffffff</color>
     <color name="clearBlue">#6a64c7ff</color>
     <color name="brightGreen">#b9f6ca</color>
+    <color name="lighterGreen">#c8e6c9</color>
     <color name="neonGreen">#b2ff59</color>
     <color name="paleLime">#f9fbe7</color>
     <color name="lime">#cddc39</color>

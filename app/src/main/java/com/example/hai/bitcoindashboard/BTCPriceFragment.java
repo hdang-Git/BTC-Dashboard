@@ -167,7 +167,8 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
                 JSONObject data = blockObject.getJSONObject("data");
                 JSONObject markets = data.getJSONObject("markets");
                 JSONObject btce = markets.getJSONObject("btce");
-                ((TextView) getView().findViewById(R.id.bitcoinCurrentPrice)).setText(btce.getString("value"));
+                String display = "BTC Price: $" + btce.getString("value");
+                ((TextView) getView().findViewById(R.id.bitcoinCurrentPrice)).setText(display);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch(NullPointerException e){
@@ -229,7 +230,6 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
                     unixDT = (long) x * 1000;
                     Date time = new Date(unixDT);
                     String date = new SimpleDateFormat("MM.dd.yy").format(time);
-
                     log.info("x: " + x + " " + date + "\ty: " + y);
                     entries.add(new Entry((float) x, (float) y));
                 }
@@ -245,18 +245,23 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         log.info("drawGraph() called");
         LineDataSet dataSet = new LineDataSet(entries, "Datetime");
         dataSet.setDrawCircles(false);
-        dataSet.setColor(Color.RED);
+        //dataSet.setColor(Color.RED);
+        dataSet.setColor(Color.WHITE);
+        //fill graph with a color gradient
         dataSet.setDrawFilled(true);
-        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.fade_red);
+        Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.fade_color);
         dataSet.setFillDrawable(drawable);
         //dataSet.setColors(ColorTemplate.PASTEL_COLORS);
-        dataSet.setLineWidth(1);
+        //set thickness of line graph
+        dataSet.setLineWidth(2);
         LineData lineData = new LineData(dataSet);
         //Display date on x-axis in specific date format
         XAxis xAxis = lineChart.getXAxis();
         //turn off x-axis grid lines
         xAxis.setDrawGridLines(false);
+        //rotate data labels
         xAxis.setLabelRotationAngle(-45);
+        //Get labels in date format
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             private SimpleDateFormat date = new SimpleDateFormat("MM.dd.yy");
             @Override
@@ -267,10 +272,12 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
                 return val;
             }
         });
+        //set x axis to bottom of graph
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        //Set color to white
+        xAxis.setTextColor(Color.WHITE);
         lineChart.setData(lineData);
         lineChart.animateX(1000);
-        //lineChart.invalidate();
     }
 
     public void formatGraph(){
@@ -281,6 +288,10 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         //turn off right y axis
         YAxis yAxis = lineChart.getAxisRight();
         yAxis.setEnabled(false);
+        yAxis.setAxisMinimum(0);
+        yAxis.setTextColor(Color.WHITE);
+        //yAxis.setAxisLineColor(Color.WHITE);
+        //yAxis.setZeroLineColor(Color.WHITE);
         //turn off y-axis grid lines
         yAxis.setDrawGridLines(false);
         //turn off description
