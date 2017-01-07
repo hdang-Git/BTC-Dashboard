@@ -58,10 +58,11 @@
 
         <View
             android:layout_width="fill_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
+            android:foregroundGravity="center"
             android:layout_above="@id/marketPrice"
             android:id="@+id/divider"
-            android:background="?android:attr/dividerHorizontal" />
+            android:background="@color/white" />
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart1"
@@ -69,6 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/divider"
             android:layout_alignParentStart="true"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_below="@+id/linearLayout" />
 
         <LinearLayout

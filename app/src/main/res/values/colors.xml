@@ -24,4 +24,13 @@
     <color name="green">#4caf50</color>
     <color name="pineGreen">#33691e</color>
     <color name="darkGreen">#1b5e20</color>
+
+    <color name="boldGreen">#2D8637</color>
+    <color name="litGreen">#66CC86</color>
+    <color name="darkestGreen">#12362A</color>
+    <color name="paleBlue">#D9DEF2</color>
+    <color name="boldBlue">#342B82</color>
+    <color name="pink">#C14497</color>
+    <color name="babyBlue">#6EBACF</color>
+    <color name="limeGreen">#97B03B</color>
 </resources>
