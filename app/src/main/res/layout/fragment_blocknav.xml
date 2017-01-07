@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:fabSize="mini"
+            app:fabSize="normal"
             app:srcCompat="@drawable/ic_queue_black_24dp"
             app:layout_anchor="@id/blocknavfrag"
             app:layout_anchorGravity="bottom|right|end"

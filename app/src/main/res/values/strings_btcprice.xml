@@ -7,4 +7,5 @@
     <string name="year1">1y</string>
     <string name="year2">2y</string>
     <string name="all">all</string>
+    <string name="btcLabel">Current BTC Price Value</string>
 </resources>
