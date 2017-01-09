@@ -53,6 +53,8 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
     Button button7;
     String times[] = {"1days", "7days", "1months", "6months", "1years", "2years", "all"};   //"1d", "7d", "1m", "6m", "1y", "2y", "all";
 
+    CustomMarkerView marker;
+
     public BTCPriceFragment() {
         // Required empty public constructor
     }
@@ -72,6 +74,7 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         button6 = (Button) v.findViewById(R.id.year2);
         button7 = (Button) v.findViewById(R.id.all);
 
+
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
@@ -80,6 +83,10 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
 
+        marker = new CustomMarkerView(getActivity().getApplicationContext(), R.layout.markergraph);
+        lineChart.setTouchEnabled(true);    //set touch enabled
+        marker.setChartView(lineChart);     //For bounds control
+        lineChart.setMarker(marker);
         formatGraph();
         retrieveBTCPriceData();
         retrieveGraphData("all");
@@ -167,7 +174,7 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
                 JSONObject data = blockObject.getJSONObject("data");
                 JSONObject markets = data.getJSONObject("markets");
                 JSONObject btce = markets.getJSONObject("btce");
-                String display = "BTC Price: $" + btce.getString("value");
+                String display = "$ " + btce.getString("value");
                 ((TextView) getView().findViewById(R.id.bitcoinCurrentPrice)).setText(display);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -245,15 +252,15 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         log.info("drawGraph() called");
         LineDataSet dataSet = new LineDataSet(entries, "Datetime");
         dataSet.setDrawCircles(false);
-        //dataSet.setColor(Color.RED);
+        dataSet.setDrawValues(false);
         dataSet.setColor(Color.WHITE);
         //fill graph with a color gradient
         dataSet.setDrawFilled(true);
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.fade_color);
         dataSet.setFillDrawable(drawable);
-        //dataSet.setColors(ColorTemplate.PASTEL_COLORS);
         //set thickness of line graph
         dataSet.setLineWidth(2);
+        //Convert to linedata object
         LineData lineData = new LineData(dataSet);
         //Display date on x-axis in specific date format
         XAxis xAxis = lineChart.getXAxis();
@@ -276,7 +283,10 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         //Set color to white
         xAxis.setTextColor(Color.WHITE);
+        xAxis.setAxisLineColor(Color.WHITE);
+        //set the data
         lineChart.setData(lineData);
+        //draw the graph
         lineChart.animateX(1000);
     }
 
@@ -286,12 +296,16 @@ public class BTCPriceFragment extends Fragment implements View.OnClickListener {
         Legend legend = lineChart.getLegend();
         legend.setEnabled(false);
         //turn off right y axis
-        YAxis yAxis = lineChart.getAxisRight();
-        yAxis.setEnabled(false);
+        YAxis yRight = lineChart.getAxisRight();
+        yRight.setEnabled(false);
+        //get left y axis
+        YAxis yAxis = lineChart.getAxisLeft();
+        //set minimum of graph
         yAxis.setAxisMinimum(0);
+        //change y-axis color & style
         yAxis.setTextColor(Color.WHITE);
-        //yAxis.setAxisLineColor(Color.WHITE);
-        //yAxis.setZeroLineColor(Color.WHITE);
+        yAxis.setAxisLineColor(Color.WHITE);
+        yAxis.setZeroLineColor(Color.WHITE);
         //turn off y-axis grid lines
         yAxis.setDrawGridLines(false);
         //turn off description
